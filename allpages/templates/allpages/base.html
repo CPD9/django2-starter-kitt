@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap cdn. Bootstrap 4 from the webiste-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet"  crossorigin="anonymous">
+
+    <!--Font Awesome cdn-->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" rel="stylesheet"  crossorigin="anonymous">
+    
+    <!-- Site-wide style sheet -->
+    <link href="{% static 'allpages/css/stylesheet.css' %}" rel="stylesheet" >
+
+    <!-- Favicon.io -->
+    <link href="{% static 'allpages/images/favicon.ico' %}" rel="shortcut icon" >
+
+    {% block headcontent %}
+
+    {% endblock headcontent %}
+
+    {# If title passed in, use it. Ottherwise, use generic title #}
+
+    <title>
+    {% if title %}
+        {{ title }}
+    {% else %}
+        Welcome!
+    {% endif %}
+    </title>
+</head>
+<body>
+    <header>
+        <img src="{% static 'allpages/images/ponydolph.png' %}" alt="">
+        Header</header>
+    <nav>
+        <a href="{% url 'allpages-home' %}">Home</a>
+        <a href="{% url 'allpages-about' %}">About</a>
+        <a href="{% url 'allpages-privacy' %}">Privacy</a>
+        <!-- Below is for test only, never show Admin link on public site -->
+        <a href="{% url 'admin:index' %}">Admin</a>
+    </nav>
+    <main>
+        {% block maincontent %}
+
+        {% endblock maincontent %}
+    </main>
+    <footer>
+        <a href="https://twitter.com/dike_d5" class="fa-twitter" tittle="Twitter"></a>
+    </footer>
+    
+</body>
+</html>
